@@ -21,7 +21,7 @@ else
     exit 1
 fi
 
-
+rm -f /lib/systemd/system/dnat$localport.service
 
 arr1=(`iptables -L PREROUTING -n -t nat --line-number |grep DNAT|grep "dpt:$localport "|sort -r|awk '{print $1,$3,$9}'|tr " " ":"|tr "\n" " "`)
 for cell in ${arr1[@]}  # cell= 1:tcp:to:8.8.8.8:543
